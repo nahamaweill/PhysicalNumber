@@ -1,8 +1,6 @@
-#include <iostream>
+#pragma once
 
 namespace ariel {
-
-using namespace std;
 
     enum Unit {
         

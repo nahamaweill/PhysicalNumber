@@ -13,7 +13,7 @@ PhysicalNumber::PhysicalNumber(double data, Unit unit)
     unit = unit;
 }
 
-PhysicalNumbe PhysicalNumber::operator+(PhysicalNumber& other)
+PhysicalNumber PhysicalNumber::operator+(PhysicalNumber& other)
 {
     return PhysicalNumber(0, Unit::M);
 }
@@ -29,7 +29,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other)
 }
 
 // Negativ function.
-PhysicalNumbe PhysicalNumber::operator-(PhysicalNumber& other)
+PhysicalNumber PhysicalNumber::operator-(PhysicalNumber& other)
 {
     return PhysicalNumber(0, Unit::M);
 }
@@ -89,7 +89,7 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
     return os;
 }
 
-istream& operator>>(istream& is, PhysicalNumber& pn)
+istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
     return is;
 }
