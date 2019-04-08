@@ -24,6 +24,12 @@ int main() {
     PhysicalNumber c(2, Unit::HOUR);
     PhysicalNumber d(30, Unit::MIN);
 
+    PhysicalNumber e(60, Unit::SEC);
+    PhysicalNumber f(200, Unit::G);
+    PhysicalNumber g(1, Unit::TON);
+    PhysicalNumber h(20, Unit::MIN);
+
+
     testcase
     .setname("Basic output")
     .CHECK_OUTPUT(a, "2[km]")
@@ -50,15 +56,38 @@ int main() {
     .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
+    
+      .setname("MyTest")
+      .CHECK_OUTPUT(d, "30[min]")
+      .CHECK_OUTPUT(h, "20[min]")
+      .CHECK_OUTPUT(d+h-h, "30[min]")
+      .CHECK_THROWS(d+g)
+      .CHECK_OUTPUT(g, "1[ton]")
+      .CHECK_OUTPUT(f, "200[g]")
+      .CHECK_OUTPUT(g+f, "[]")
+      .CHECK_OUTPUT(b, "300[m]")
+      .CHECK_OUTPUT(b-, "-300[m]")
+      .CHECK_OUTPUT(b+, "300[m]")
+      .CHECK_OUTPUT(d>h, true)
+      .CHECK_OUTPUT(c<=d, false)
+      .CHECK_OUTPUT(h+=10, "30[min]")
+      .CHECK_OUTPUT(h==d,true)
+      .CHECK_OUTPUT(c++, "3[hour]")
+      .CHECK_OUTPUT(g--, "0[ton]")
+      .CHECK_THROWS(c-=f)
+      .CHECK_OK(istringstream("2[km]") >> a)
+      .CHECK_OUTPUT(a-b, "1.7[km]")
+      .CHECK_THROWS(a!=e)
+      .CHECK_OUTPUT(a!=b, false)
 
-      .setname("...")
 
-      .print(cout, /*show_grade=*/false);
+
+      .print(cout, /show_grade=/false);
       grade = testcase.grade();
     } else {
       testcase.print_signal(signal);
       grade = 0;
     }
-    cout <<  "*** Grade: " << grade << " ***" << endl;
+    cout <<  "* Grade: " << grade << " *" << endl;
     return grade;
 }
