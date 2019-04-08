@@ -1,8 +1,5 @@
 /**
  * Examples of automatic tests for the exercise on physical numbers.
- *
- * @author Erel Segal-Halevi
- * @since 2019-02
  */
 
 #include <iostream>
@@ -12,9 +9,10 @@ using std::cout, std::endl, std::istringstream;
 using ariel::PhysicalNumber, ariel::Unit;
 #include "badkan.hpp"
 
-int main() {
+int main()
+{
   badkan::TestCase testcase;
-  int grade=0;
+  int grade = 0;
   int signal = setjmp(badkan::longjmp_buffer);
   if (signal == 0) {
 
@@ -28,7 +26,6 @@ int main() {
     PhysicalNumber f(200, Unit::G);
     PhysicalNumber g(1, Unit::TON);
     PhysicalNumber h(20, Unit::MIN);
-
 
     testcase
     .setname("Basic output")
@@ -57,34 +54,60 @@ int main() {
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
     
-      .setname("MyTest")
-      .CHECK_OUTPUT(d, "30[min]")
-      .CHECK_OUTPUT(h, "20[min]")
-      .CHECK_OUTPUT(d+h-h, "30[min]")
-      .CHECK_THROWS(d+g)
-      .CHECK_OUTPUT(g, "1[ton]")
-      .CHECK_OUTPUT(f, "200[g]")
-      .CHECK_OUTPUT(g+f, "[]")
-      .CHECK_OUTPUT(b, "300[m]")
-      .CHECK_OUTPUT(b-, "-300[m]")
-      .CHECK_OUTPUT(b+, "300[m]")
-      .CHECK_OUTPUT(d>h, true)
-      .CHECK_OUTPUT(c<=d, false)
-      .CHECK_OUTPUT(h+=10, "30[min]")
-      .CHECK_OUTPUT(h==d,true)
-      .CHECK_OUTPUT(c++, "3[hour]")
-      .CHECK_OUTPUT(g--, "0[ton]")
-      .CHECK_THROWS(c-=f)
-      .CHECK_OK(istringstream("2[km]") >> a)
-      .CHECK_OUTPUT(a-b, "1.7[km]")
-      .CHECK_THROWS(a!=e)
-      .CHECK_OUTPUT(a!=b, false)
+    .setname("MyTest")
+    .CHECK_OK(istringstream("30[min]") >> d)
+    .CHECK_OK(istringstream("20[min]") >> h)
+    .CHECK_OUTPUT(d, "30[min]")
+    .CHECK_OUTPUT(h, "20[min]")
+    .CHECK_OUTPUT(d+h-h, "30[min]") //Checks if the output is right.
+    .CHECK_THROWS(d+g) //Checks if METER + GRAM throws exception.
+    .CHECK_OUTPUT(g, "1[ton]")
+    .CHECK_OUTPUT(f, "200[g]")
+    .CHECK_OUTPUT(g+f, "[1000200]") //Checks if it converts the TON to Gram and sums them.
+    .CHECK_OUTPUT((g+f)-, "[1000200]") //Checks if the negative onary operator works(after sum).
+    .CHECK_OUTPUT((g+f)+, "[1000200]") //Checks if the positive onary operator works(after sum).
+    .CHECK_OUTPUT(b, "300[m]")
+    .CHECK_OUTPUT(b-, "-300[m]") //Checks if the negative onary operator works.
+    .CHECK_OUTPUT(b+, "300[m]") //Checks if the positive onary operator works.
+    .CHECK_OUTPUT(b+, "300[m]") //Checks if nothing has changed.
+    .CHECK_OUTPUT(d>h, true)
+    .CHECK_THROWS(d>g) //Checks if METER > GRAM throws exaption.
+    .CHECK_OUTPUT(h<d, true)
+    .CHECK_THROWS(h<g) //Checks if MINUTE > GRAM throws exception.
+    .CHECK_THROWS(h==g) //Checks if MINUTE == GRAM throws exception.
+    .CHECK_THROWS(h<=g) //Checks if MINUTE <= GRAM throws exception.
+    .CHECK_THROWS(h>=g) //Checks if MINUTE >= GRAM throws exception.
+    .CHECK_THROWS(h+=g) //Checks if MINUTE += GRAM throws exception.
+    .CHECK_THROWS(h-=g) //Checks if MINUTE -= GRAM throws exception.
+    .CHECK_OUTPUT(c<=d, false)
+    .CHECK_OUTPUT(h+=10, "30[min]")
+    .CHECK_OUTPUT(h, "30[min]") //Checks if the change worked well.
+    .CHECK_OUTPUT(h==d,true)
+    .CHECK_OUTPUT(c++, "3[hour]")
+    .CHECK_OUTPUT(c, "3[hour]") //Checks if the change worked well.
+    .CHECK_OUTPUT(g--, "0[ton]")
+    .CHECK_OUTPUT(g, "0[ton]") //Checks if the change worked well.
+    .CHECK_OUTPUT(c<h, false)
+    .CHECK_THROWS(c>a) //Checks if MINUTE > GRAM throws exception.
+    .CHECK_THROWS(c<a) //Checks if MINUTE > GRAM throws exception.
+    .CHECK_THROWS(c==a) //Checks if MINUTE == GRAM throws exception.
+    .CHECK_THROWS(c<=a) //Checks if MINUTE <= GRAM throws exception.
+    .CHECK_THROWS(c>=a) //Checks if MINUTE >= GRAM throws exception.
+    .CHECK_THROWS(c+=a) //Checks if MINUTE += GRAM throws exception.
+    .CHECK_THROWS(c-=a) //Checks if MINUTE -= GRAM throws exception.
+    .CHECK_OUTPUT(c-=h, "2.5[hour]")
+    .CHECK_OUTPUT(c, "2.5[hour]") //Checks if the change worked well.
+    .CHECK_OK(istringstream("2[km]") >> a)
+    .CHECK_OK(istringstream("2.5[hour]") >> c)
+    .CHECK_OUTPUT(a-b, "1.7[km]")
+    .CHECK_THROWS(a!=e) //Checks if KILOMETER -= SECOND throws exception.
+    .CHECK_OUTPUT(a!=b, false)
 
-
-
-      .print(cout, /show_grade=/false);
-      grade = testcase.grade();
-    } else {
+    .print(cout, /show_grade=/false);
+    grade = testcase.grade();
+    }
+    else
+    {
       testcase.print_signal(signal);
       grade = 0;
     }

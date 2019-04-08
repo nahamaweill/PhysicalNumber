@@ -1,18 +1,18 @@
 #pragma once
 
-namespace ariel {
-
-    enum Unit {
-        
+namespace ariel
+{
+    //Kinds of units size.
+    enum Unit
+    {  
+        CM,
         M,
         KM,
-        CM,
         SEC,
         MIN,
         HOUR,
         G,
         KG,
         TON
-
     };
 };

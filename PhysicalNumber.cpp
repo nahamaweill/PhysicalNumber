@@ -5,12 +5,12 @@
 using namespace ariel;
 
 /*
-A constructor that get a number and a unit.
+A constructor that gets a number and a unit.
 */
 PhysicalNumber::PhysicalNumber(double data, Unit unit)
 {
-    data = data;
-    unit = unit;
+    this.data = data;
+    this.unit = unit;
 }
 
 PhysicalNumber PhysicalNumber::operator+(PhysicalNumber& other)
@@ -93,7 +93,3 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
     return is;
 }
-
-
-
-
