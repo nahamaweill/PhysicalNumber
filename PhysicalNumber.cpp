@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string.h>
+#include <sstream>
+#include <stdexcept>
 #include "PhysicalNumber.h"
 
 using namespace ariel;
@@ -9,8 +11,12 @@ A constructor that gets a number and a unit.
 */
 PhysicalNumber::PhysicalNumber(double data, Unit unit)
 {
-    this.data = data;
-    this.unit = unit;
+    this->data = data;
+    this->unit = unit;
+}
+
+PhysicalNumber::~PhysicalNumber(){
+
 }
 
 PhysicalNumber PhysicalNumber::operator+(PhysicalNumber& other)

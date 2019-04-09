@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include <stdexcept>
 #include "Unit.h"
 
 namespace ariel
@@ -14,6 +16,7 @@ using namespace std;
         public: //Public functions.
 
         PhysicalNumber(double data, Unit unit); //A constructor.
+        ~PhysicalNumber(); //Destructor
 
         //Positive:
         PhysicalNumber operator+(PhysicalNumber& other);
