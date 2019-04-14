@@ -303,7 +303,7 @@ PhysicalNumber& PhysicalNumber::operator--()
     return *this;
 }
 
-const bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -327,7 +327,7 @@ const bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalN
     
 }
 
-const bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -350,7 +350,7 @@ const bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalN
     return (tempThis.data < tempOther.data);
 }
 
-const bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -373,7 +373,7 @@ const bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const Physical
     return (tempThis.data <= tempOther.data);
 }
 
-const bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -396,7 +396,7 @@ const bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const Physical
     return (tempThis.data >= tempOther.data);
 }
 
-const bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -419,7 +419,7 @@ const bool PhysicalNumber::operator==(const PhysicalNumber& num1, const Physical
     return (tempThis.data == tempOther.data);
 }
 
-const bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
