@@ -31,21 +31,21 @@ using namespace std;
         }
 
         //Positive:
-        PhysicalNumber operator+(PhysicalNumber& other);
+        PhysicalNumber operator+(const PhysicalNumber& other);
         const PhysicalNumber operator+(); //onary
         PhysicalNumber& operator+=(const PhysicalNumber& other);
 
         //Negative:
-        PhysicalNumber operator-(PhysicalNumber& other);
+        PhysicalNumber operator-(const PhysicalNumber& other);
         const PhysicalNumber operator-(); //onary
         PhysicalNumber& operator-=(const PhysicalNumber& other);
 
-        const bool operator>(const PhysicalNumber& other);
-        const bool operator<(const PhysicalNumber& other);
-        const bool operator<=(const PhysicalNumber& other);
-        const bool operator>=(const PhysicalNumber& other);
-        const bool operator==(const PhysicalNumber& other);
-        const bool operator!=(const PhysicalNumber& other);
+        const bool operator>(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        const bool operator<(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        const bool operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        const bool operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        const bool operator==(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        const bool operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2);
 
 
         PhysicalNumber& operator++();
