@@ -13,6 +13,18 @@ PhysicalNumber::PhysicalNumber(double data, Unit unit)
     this->unit = unit;
 }
 
+bool sameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
+{
+    bool flag = false;
+
+    if(num1.getUnit == num2.getUnit)
+    {
+        return true;
+    }
+    return flag;
+}
+
+
 PhysicalNumber PhysicalNumber::operator+(PhysicalNumber& other)
 {
     return PhysicalNumber(0, Unit::M);
@@ -91,5 +103,5 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
-    return is ;
+    return is;
 }

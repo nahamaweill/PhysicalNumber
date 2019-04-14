@@ -14,6 +14,27 @@ using namespace std;
         public: //Public functions.
 
         PhysicalNumber(double data, Unit unit); //A constructor.
+        
+        //Getters and Setters:
+        Unit getUnit()
+        {
+            return this->unit;
+        }
+
+        void setUnit(Unit un)
+        {
+            this->unit = un;
+        }
+
+        double getData()
+        {
+            return this->data;
+        }
+
+        void setData(double data)
+        {
+            this->data = data;
+        }
 
         //Positive:
         PhysicalNumber operator+(PhysicalNumber& other);
