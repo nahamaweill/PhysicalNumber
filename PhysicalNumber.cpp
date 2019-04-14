@@ -214,15 +214,15 @@ This function changes the data of the unit to the it's positive number.
 */
 const PhysicalNumber PhysicalNumber::operator+()
 {
+
     if (this->data <0)
     {
-        PhysicalNumber tempThis((-1)*(this->data), this->unit);
+       return PhysicalNumber tempThis((-1)*(this->data), this->unit);
     }
     else
     {
-        PhysicalNumber tempThis(this->data, this->unit);
+      return  PhysicalNumber tempThis(this->data, this->unit);
     }
-    return tempThis;
 }
 
 /*
