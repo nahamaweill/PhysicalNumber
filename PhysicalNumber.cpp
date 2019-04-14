@@ -55,41 +55,41 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
     {
         if (((num1.unit == KM) && (num2.unit == M)) || ((num1.unit == M) && (num2.unit == KM))) //Checks if the numbers are from type 'km' and 'm'.
         {
-            if (num1.unit == KM) //Checks if num1 is the bigger number.
+            if (num1.unit == KM) //Checks if num1 is in 'km'.
             {
                 num2.setData(num2.data / 1000);
                 num2.setUnit(KM);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'm'.
             {
-                num1.setData(num1.data / 1000);
-                num1.setUnit(KM);
+                num2.setData(num2.data * 1000);
+                num2.setUnit(M);
             }
         }
         else if (((num1.unit == KM) && (num2.unit == CM)) || ((num1.unit == CM) && (num2.unit == KM))) //Checks if the numbers are from type 'km' and 'cm'.
         {
-            if (num1.unit == KM) //Checks if num1 is the bigger number.
+            if (num1.unit == KM) //Checks if num1 is in 'km'.
             {
                 num2.setData(num2.data / 100000);
                 num2.setUnit(KM);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'cm'.
             {
-                num1.setData(num1.data / 100000);
-                num1.setUnit(KM);
+                num2.setData(num2.data * 100000);
+                num2.setUnit(CM);
             }
         }
         else if (((num1.unit == M) && (num2.unit == CM)) || ((num1.unit == CM) && (num2.unit == M))) //Checks if the numbers are from type 'm' and 'cm'.
         {
-            if (num1.unit == M) //Checks if num1 is the bigger number.
+            if (num1.unit == M) //Checks if num1 is in 'm'.
             {
                 num2.setData(num2.data / 100);
                 num2.setUnit(M);
             }   
-            else // Else - num2 is the bigger number.
+            else // Else - num1 is in 'cm'.
             {
-                num1.setData(num1.data / 100);
-                num1.setUnit(M);
+                num2.setData(num2.data * 100);
+                num2.setUnit(CM);
             }
         }
     }
@@ -98,41 +98,41 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
     {
         if (((num1.unit == HOUR) && (num2.unit == MIN)) || ((num1.unit == MIN) && (num2.unit == HOUR))) //Checks if the numbers are from type 'hour' and 'min'.
         {
-            if (num1.unit == HOUR) //Checks if num1 is the bigger number.
+            if (num1.unit == HOUR) //Checks if num1 is in 'hour'.
             {
                 num2.setData(num2.data / 60);
                 num2.setUnit(HOUR);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'min'
             {
-                num1.setData(num1.data / 60);
-                num1.setUnit(HOUR);
+                num2.setData(num2.data * 60);
+                num2.setUnit(MIN);
             }
         }
         else if (((num1.unit == HOUR) && (num2.unit == SEC)) || ((num1.unit == SEC) && (num2.unit == HOUR))) //Checks if the numbers are from type 'hour' and 'sec'.
         {
-            if (num1.unit == HOUR) //Checks if num1 is the bigger number.
+            if (num1.unit == HOUR) //Checks if num1 is in 'hour'.
             {
                 num2.setData(num2.data / 3600);
                 num2.setUnit(HOUR);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'sec'.
             {
-                num1.setData(num1.data / 3600);
-                num1.setUnit(HOUR);
+                num2.setData(num2.data * 3600);
+                num2.setUnit(SEC);
             }
         }
         else if (((num1.unit == MIN) && (num2.unit == SEC)) || ((num1.unit == SEC) && (num2.unit == MIN))) //Checks if the numbers are from type 'min' and 'sec'.
         {
-            if (num1.unit == MIN) //Checks if num1 is the bigger number.
+            if (num1.unit == MIN) //Checks if num1 is in 'min'.
             {
                 num2.setData(num2.data / 60);
                 num2.setUnit(MIN);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'sec'.
             {
-                num1.setData(num1.data / 60);
-                num1.setUnit(MIN);
+                num2.setData(num2.data * 60);
+                num2.setUnit(SEC);
             }
         }
     }
@@ -141,41 +141,41 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
     {
         if (((num1.unit == TON) && (num2.unit == KG)) || ((num1.unit == KG) && (num2.unit == TON))) //Checks if the numbers are from type 'ton' and 'kg'.
         {
-            if (num1.unit == TON) //Checks if num1 is the bigger number.
+            if (num1.unit == TON) //Checks if num1 is in 'ton'.
             {
                 num2.setData(num2.data / 1000);
                 num2.setUnit(TON);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'kg'.
             {
-                num1.setData(num1.data / 1000);
-                num1.setUnit(TON);
+                num2.setData(num2.data * 1000);
+                num2.setUnit(KG);
             }
         }
         else if (((num1.unit == TON) && (num2.unit == G)) || ((num1.unit == G) && (num2.unit == TON))) //Checks if the numbers are from type 'ton' and 'g'.
         {
-            if (num1.unit == TON) //Checks if num1 is the bigger number.
+            if (num1.unit == TON) //Checks if num1 is in 'ton'.
             {
                 num2.setData(num2.data / 1000000);
                 num2.setUnit(TON);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'g'.
             {
-                num1.setData(num1.data / 1000000);
-                num1.setUnit(TON);
+                num2.setData(num2.data * 1000000);
+                num2.setUnit(G);
             }
         }
         else if (((num1.unit == KG) && (num2.unit == G)) || ((num1.unit == G) && (num2.unit == KG))) //Checks if the numbers are from type 'kg' and 'g'.
         {
-            if (num1.unit == KG) //Checks if num1 is the bigger number.
+            if (num1.unit == KG) //Checks if num1 is in 'kg'.
             {
                 num2.setData(num2.data / 1000);
                 num2.setUnit(KG);
             }   
-            else //Else - num2 is the bigger number.
+            else //Else - num1 is in 'g'.
             {
-                num1.setData(num1.data / 1000);
-                num1.setUnit(KG);
+                num2.setData(num2.data * 1000);
+                num2.setUnit(G);
             }
         }
     }
@@ -262,8 +262,9 @@ This function changes the data of the unit to the it's negative number.
 */
 const PhysicalNumber PhysicalNumber::operator-()
 {
-    this->setData((this->data) * (-1));
-    return *this;
+    PhysicalNumber tempThis(this->data, this->unit);
+    tempThis.setData((this->data) * (-1));
+    return tempThis;
 }
 
 /*
