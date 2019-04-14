@@ -11,6 +11,10 @@ using namespace std;
         Unit unit; //Kinds of units size which explains what is the data before.
         double data; //A number of unit size.
 
+        //Help functions:
+        bool sameGroup(PhysicalNumber& num1, PhysicalNumber& num2);
+        void convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& num2);
+
         public: //Public functions.
 
         PhysicalNumber(double data, Unit unit); //A constructor.
