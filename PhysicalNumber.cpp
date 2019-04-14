@@ -310,9 +310,9 @@ PhysicalNumber& PhysicalNumber::operator--()
     return *this;
 }
 
-bool PhysicalNumber::operator>( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator>(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -321,9 +321,9 @@ bool PhysicalNumber::operator>( PhysicalNumber& num1,  PhysicalNumber& num2)
         __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data > num2.data);
+        return (tempThis.data > tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -334,9 +334,9 @@ bool PhysicalNumber::operator>( PhysicalNumber& num1,  PhysicalNumber& num2)
     
 }
 
-bool PhysicalNumber::operator<( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator<(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -345,9 +345,9 @@ bool PhysicalNumber::operator<( PhysicalNumber& num1,  PhysicalNumber& num2)
         __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data < num2.data);
+        return (tempThis.data < tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -357,9 +357,9 @@ bool PhysicalNumber::operator<( PhysicalNumber& num1,  PhysicalNumber& num2)
     return (tempThis.data < tempOther.data);
 }
 
-bool PhysicalNumber::operator<=( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -368,9 +368,9 @@ bool PhysicalNumber::operator<=( PhysicalNumber& num1,  PhysicalNumber& num2)
         __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data <= num2.data);
+        return (tempThis.data <= tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -380,9 +380,9 @@ bool PhysicalNumber::operator<=( PhysicalNumber& num1,  PhysicalNumber& num2)
     return (tempThis.data <= tempOther.data);
 }
 
-bool PhysicalNumber::operator>=( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -391,9 +391,9 @@ bool PhysicalNumber::operator>=( PhysicalNumber& num1,  PhysicalNumber& num2)
         __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data >= num2.data);
+        return (tempThis.data >= tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -403,9 +403,9 @@ bool PhysicalNumber::operator>=( PhysicalNumber& num1,  PhysicalNumber& num2)
     return (tempThis.data >= tempOther.data);
 }
 
-bool PhysicalNumber::operator==( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator==(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -414,9 +414,9 @@ bool PhysicalNumber::operator==( PhysicalNumber& num1,  PhysicalNumber& num2)
         __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data == num2.data);
+        return (tempThis.data == tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -426,9 +426,9 @@ bool PhysicalNumber::operator==( PhysicalNumber& num1,  PhysicalNumber& num2)
     return (tempThis.data == tempOther.data);
 }
 
-bool PhysicalNumber::operator!=( PhysicalNumber& num1,  PhysicalNumber& num2)
+bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(num1.data, num1.unit);
+    PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -437,9 +437,9 @@ bool PhysicalNumber::operator!=( PhysicalNumber& num1,  PhysicalNumber& num2)
         return true;
     }
     //If they have the same unit.
-    else if(num1.unit == num2.unit)
+    else if(tempThis.unit == tempOther.unit)
     {
-        return (num1.data != num2.data);
+        return (tempThis.data != tempOther.data);
     }
     //If they don't have the same unit but they are on the same group.
     else
@@ -499,7 +499,7 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
-    string temp, num;
+    string temp1, value1;
     int posStart=0;
     int posEnd=0;
     is>>temp1;
