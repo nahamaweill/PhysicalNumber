@@ -19,20 +19,10 @@ using namespace std;
 
         PhysicalNumber(double data, Unit unit); //A constructor.
         
-        //Getters and Setters:
-        Unit getUnit()
-        {
-            return this->unit;
-        }
-
+        //Setters:
         void setUnit(Unit un)
         {
             this->unit = un;
-        }
-
-        double getData()
-        {
-            return this->data;
         }
 
         void setData(double data)
