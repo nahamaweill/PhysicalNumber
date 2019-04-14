@@ -217,11 +217,11 @@ const PhysicalNumber PhysicalNumber::operator+()
 
     if (this->data <0)
     {
-       return PhysicalNumber tempThis((-1)*(this->data), this->unit);
+       return PhysicalNumber ((-1)*(this->data), this->unit);
     }
     else
     {
-      return  PhysicalNumber tempThis(this->data, this->unit);
+      return  PhysicalNumber (this->data, this->unit);
     }
 }
 
