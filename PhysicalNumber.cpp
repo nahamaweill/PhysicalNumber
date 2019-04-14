@@ -214,7 +214,15 @@ This function changes the data of the unit to the it's positive number.
 */
 const PhysicalNumber PhysicalNumber::operator+()
 {
-    return *this;
+    if (this->data <0)
+    {
+        PhysicalNumber tempThis((-1)*(this->data), this->unit);
+    }
+    else
+    {
+        PhysicalNumber tempThis(this->data, this->unit);
+    }
+    return tempThis;
 }
 
 /*
@@ -296,14 +304,13 @@ PhysicalNumber& PhysicalNumber::operator--()
     if(this->data < 1) //Checks if the data is smaller than 1.
     {
         __throw_runtime_error("The number is smaller than 1.");
-        exit;
     }
 
     this->setData(this->data - 1);
     return *this;
 }
 
-bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -327,7 +334,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber&
     
 }
 
-bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -350,7 +357,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber&
     return (tempThis.data < tempOther.data);
 }
 
-bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -373,7 +380,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber
     return (tempThis.data <= tempOther.data);
 }
 
-bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -396,7 +403,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber
     return (tempThis.data >= tempOther.data);
 }
 
-bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -419,7 +426,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber
     return (tempThis.data == tempOther.data);
 }
 
-bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool ariel::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
