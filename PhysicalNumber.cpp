@@ -492,28 +492,40 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
-    // string temp, num, type;
-    // is >> temp;
-    // num = s.substr(0,s.find("["));
-    // if
-
-    int temp ; 
-    double size ; 
-    is >> size ;
-    pn.setData(size); 
-    is >> temp ; 
-    switch (temp)
+    string temp1, value1;
+    int posStart=0;
+    int posEnd=0;
+    is>>temp1;
+    posStart=temp1.find('[');
+    posEnd=temp1.find(']');
+    if((posStart<=0) || (posEnd!=temp1.length()-1) || (posStart+1==posEnd)|| (posEnd<0))
+        return is;
+    else 
     {
-      case 0 : pn.setUnit(KM); break;
-      case 1 : pn.setUnit(M) ; break;
-      case 2 : pn.setUnit(CM); break;
-      case 3 : pn.setUnit(HOUR) ; break;
-      case 4 : pn.setUnit(MIN) ; break;
-      case 5 : pn.setUnit(SEC) ; break; 
-      case 6 : pn.setUnit(TON) ; break;
-      case 7 : pn.setUnit(KG); break;
-      case 8 : pn.setUnit(G) ; break;
-    } 
-
+        value1 = temp1.substr(0, posStart);
+        
+        temp1 = temp1.substr(posStart + 1, temp1.length() - 2 - posStart);
+        if ((temp1 == "cm") || (temp1 == "CM"))
+            pn.setUnit(CM);
+        else if ((temp1 == "m") || (temp1 == "M"))
+            pn.setUnit(M);
+        else if ((temp1 == "km") || (temp1 == "KM"))
+            pn.setUnit(KM);
+        else if ((temp1 == "sec") || (temp1 == "SEC"))
+            pn.setUnit(SEC);
+        else if ((temp1 == "min") || (temp1 == "MIN"))
+            pn.setUnit(MIN);
+        else if ((temp1 == "hour") || (temp1 == "HOUR"))
+            pn.setUnit(HOUR);
+        else if ((temp1 == "g") || (temp1 == "G"))
+            pn.setUnit(G);
+        else if ((temp1 == "kg") || (temp1 == "KG"))
+            pn.setUnit(KG);
+        else if ((temp1 == "ton") || (temp1 == "TON"))
+            pn.setUnit(TON);
+        else
+            return is;
+    }
+    pn.setData(stod(value1));
     return is;
 }
