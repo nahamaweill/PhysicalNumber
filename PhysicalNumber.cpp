@@ -310,7 +310,7 @@ PhysicalNumber& PhysicalNumber::operator--()
     return *this;
 }
 
-bool ariel::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -334,7 +334,7 @@ bool ariel::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
     
 }
 
-bool ariel::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -357,7 +357,7 @@ bool ariel::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
     return (tempThis.data < tempOther.data);
 }
 
-bool ariel::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -380,7 +380,7 @@ bool ariel::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
     return (tempThis.data <= tempOther.data);
 }
 
-bool ariel::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -403,7 +403,7 @@ bool ariel::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
     return (tempThis.data >= tempOther.data);
 }
 
-bool ariel::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -426,7 +426,7 @@ bool ariel::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
     return (tempThis.data == tempOther.data);
 }
 
-bool ariel::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
+bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
