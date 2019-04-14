@@ -48,6 +48,121 @@ bool PhysicalNumber::sameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
     return false;
 }
 
+void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
+{
+    // Check if numbers are in the Length group.
+    if((num1.getUnit == M) || (num1.getUnit == CM) || (num1.getUnit == KM)) 
+    {
+        if (((num1.getUnit == KM) && (num2.getUnit == M)) || ((num1.getUnit == M) && (num2.getUnit == KM))) // Checking if the numbers are from type 'km' and 'm'.
+        {
+            if (num1.getUnit == KM) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/1000);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/1000);
+            }
+        }
+        else if (((num1.getUnit == KM) && (num2.getUnit == CM)) || ((num1.getUnit == CM) && (num2.getUnit == KM)))// Checking if the numbers are from type 'km' and 'cm'.
+        {
+            if (num1.getUnit == KM) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/100000);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/100000);
+            }
+        }
+        else if (((num1.getUnit == M) && (num2.getUnit == CM)) || ((num1.getUnit == CM) && (num2.getUnit == M)))// Checking if the numbers are from type 'm' and 'cm'.
+        {
+            if (num1.getUnit == M) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/100);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/100);
+            }
+        }
+    }
+    // Check if the numbers are in the Time group.
+    else if ((num1.getUnit == HOUR) || (num1.getUnit == MIN) || (num1.getData == SEC)) 
+    {
+        if (((num1.getUnit == HOUR) && (num2.getUnit == MIN)) || ((num1.getUnit == MIN) && (num2.getUnit == HOUR))) // Checking if the numbers are from type 'hour' and 'min'.
+        {
+            if (num1.getUnit == HOUR) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/60);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/60);
+            }
+        }
+        else if (((num1.getUnit == HOUR) && (num2.getUnit == SEC)) || ((num1.getUnit == SEC) && (num2.getUnit == HOUR))) // Checking if the numbers are from type 'hour' and 'sec'.
+        {
+            if (num1.getUnit == HOUR) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/3600);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/3600);
+            }
+        }
+        else if (((num1.getUnit == MIN) && (num2.getUnit == SEC)) || ((num1.getUnit == SEC) && (num2.getUnit == MIN))) // Checking if the numbers are from type 'min' and 'sec'.
+        {
+            if (num1.getUnit == MIN) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/60);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/60);
+            }
+        }
+    }
+    // Check if the numbers are in the weight group.
+    else if ((num1.getUnit == TON) || (num1.getUnit == KG) || (num1.getData == G)) 
+    {
+        if (((num1.getUnit == TON) && (num2.getUnit == KG)) || ((num1.getUnit == KG) && (num2.getUnit == TON))) // Checking if the numbers are from type 'ton' and 'kg'.
+        {
+            if (num1.getUnit == TON) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/1000);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/1000);
+            }
+        }
+        else if (((num1.getUnit == TON) && (num2.getUnit == G)) || ((num1.getUnit == G) && (num2.getUnit == TON))) // Checking if the numbers are from type 'ton' and 'g'.
+        {
+            if (num1.getUnit == TON) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/1000000);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/1000000);
+            }
+        }
+        else if (((num1.getUnit == KG) && (num2.getUnit == G)) || ((num1.getUnit == G) && (num2.getUnit == KG))) // Checking if the numbers are from type 'kg' and 'g'.
+        {
+            if (num1.getUnit == KG) // Check if num1 is the bigger number.
+            {
+                num2.setData(num2.getData/1000);
+            }   
+            else // Else num2 is the bigger number.
+            {
+                num1.setData(num1.getData/1000);
+            }
+        }
+    }
+}
+
 /*
 This function sums 2 PhysicalNumbers if they on the same units group by convert the smaller to the bigger.
 It gets help from sameGroup function
