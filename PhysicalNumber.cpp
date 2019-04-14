@@ -310,9 +310,9 @@ PhysicalNumber& PhysicalNumber::operator--()
     return *this;
 }
 
-bool PhysicalNumber::operator>(const PhysicalNumber& num2)
+bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -334,9 +334,9 @@ bool PhysicalNumber::operator>(const PhysicalNumber& num2)
     
 }
 
-bool PhysicalNumber::operator<(const PhysicalNumber& num2)
+bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -357,9 +357,9 @@ bool PhysicalNumber::operator<(const PhysicalNumber& num2)
     return (tempThis.data < tempOther.data);
 }
 
-bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
+bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -380,9 +380,9 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
     return (tempThis.data <= tempOther.data);
 }
 
-bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
+bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -403,9 +403,9 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
     return (tempThis.data >= tempOther.data);
 }
 
-bool PhysicalNumber::operator==(const PhysicalNumber& num2)
+bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
@@ -426,9 +426,9 @@ bool PhysicalNumber::operator==(const PhysicalNumber& num2)
     return (tempThis.data == tempOther.data);
 }
 
-bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
+bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
-    PhysicalNumber tempThis(this->data, this->unit);
+    PhysicalNumber tempThis(num1.data, num1.unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
 
     //If they are not on the same group.
