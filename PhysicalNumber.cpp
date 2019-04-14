@@ -492,5 +492,28 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
+    // string temp, num, type;
+    // is >> temp;
+    // num = s.substr(0,s.find("["));
+    // if
+
+    int temp ; 
+    double size ; 
+    is >> size ;
+    pn.setData(size); 
+    is >> temp ; 
+    switch (temp)
+    {
+      case 0 : pn.setUnit(KM); break;
+      case 1 : pn.setUnit(M) ; break;
+      case 2 : pn.setUnit(CM); break;
+      case 3 : pn.setUnit(HOUR) ; break;
+      case 4 : pn.setUnit(MIN) ; break;
+      case 5 : pn.setUnit(SEC) ; break; 
+      case 6 : pn.setUnit(TON) ; break;
+      case 7 : pn.setUnit(KG); break;
+      case 8 : pn.setUnit(G) ; break;
+    } 
+
     return is;
 }
