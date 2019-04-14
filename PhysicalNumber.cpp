@@ -332,7 +332,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& num1, const PhysicalNumber&
     }
     return (tempThis.data > tempOther.data);
     
-}
+};
 
 bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
@@ -355,7 +355,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& num1, const PhysicalNumber&
         convertIfSameGroup(tempThis, tempOther);
     }
     return (tempThis.data < tempOther.data);
-}
+};
 
 bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
@@ -378,7 +378,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& num1, const PhysicalNumber
         convertIfSameGroup(tempThis, tempOther);
     }
     return (tempThis.data <= tempOther.data);
-}
+};
 
 bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
@@ -401,7 +401,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& num1, const PhysicalNumber
         convertIfSameGroup(tempThis, tempOther);
     }
     return (tempThis.data >= tempOther.data);
-}
+};
 
 bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
@@ -424,7 +424,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& num1, const PhysicalNumber
         convertIfSameGroup(tempThis, tempOther);
     }
     return (tempThis.data == tempOther.data);
-}
+};
 
 bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2)
 {
@@ -447,7 +447,7 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& num1, const PhysicalNumber
         convertIfSameGroup(tempThis, tempOther);
     }
     return (tempThis.data != tempOther.data);
-}
+};
 
 ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 {
