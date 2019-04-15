@@ -1,6 +1,7 @@
 # Physical Number
 \
 This project represents physical numbers. \
+\
 Units kinds: \
 *Kilometer. \
 *Meter. \
@@ -11,6 +12,7 @@ Units kinds: \
 *Ton. \
 *Kilogram. \
 *Gram. \
+\
 It has units with a number and have the possiblety to use operatorstors, sometimes by converts one unit to other if they are on the same group.
  \
  \
