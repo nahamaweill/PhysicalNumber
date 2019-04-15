@@ -528,7 +528,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 
     if((parStart<=0) || (parEnd!=temp.length()-1) || (parStart>=parEnd) || (parStart+1 == parEnd) || (parEnd<=0))
     {
-        __throw_runtime_error("They input is not corect.");
+        return is;
     }
     else
     {
