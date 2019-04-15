@@ -578,7 +578,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
         }
         else
         {
-            return is
+            return is;
         }
 
         if (stod(num) >=0)
