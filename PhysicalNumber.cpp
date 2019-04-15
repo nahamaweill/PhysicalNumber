@@ -308,7 +308,7 @@ PhysicalNumber& PhysicalNumber::operator--()
 
 PhysicalNumber PhysicalNumber::operator++(int num)
 {
-    PhysicalNumber temp = *this;
+    PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
     this->setData(this->data + 1);
     return temp;
 }
@@ -316,7 +316,7 @@ PhysicalNumber PhysicalNumber::operator++(int num)
 PhysicalNumber PhysicalNumber::operator--(int num)
 {
 
-    PhysicalNumber temp = *this;
+    PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
 
     if(this->data < 1) //Checks if the data is smaller than 1.
     {
