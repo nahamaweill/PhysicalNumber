@@ -319,7 +319,7 @@ PhysicalNumber PhysicalNumber::operator++(int num)
 
 PhysicalNumber PhysicalNumber::operator--(int num)
 {
-    
+
     PhysicalNumber temp = *this;
 
     if(this->data < 1) //Checks if the data is smaller than 1.
@@ -524,40 +524,72 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
-    string temp1, value1;
-    int posStart=0;
-    int posEnd=0;
-    is>>temp1;
-    posStart=temp1.find('[');
-    posEnd=temp1.find(']');
-    if((posStart<=0) || (posEnd!=temp1.length()-1) || (posStart+1==posEnd)|| (posEnd<0))
-        return is;
-    else 
+
+    string temp, num, type;;
+    int parStart=0;
+    int parEnd=0;
+    is >> temp;
+    parStart = temp.find('[');
+    parEnd = temp.find(']');
+
+    if((parStart<=0) || (parEnd!=temp.length()-1) || (parStart>=parEnd) || (parStart+1 == parEnd) || (parEnd<=0))
     {
-        value1 = temp1.substr(0, posStart);
-        
-        temp1 = temp1.substr(posStart + 1, temp1.length() - 2 - posStart);
-        if ((temp1 == "cm") || (temp1 == "CM"))
-            pn.setUnit(CM);
-        else if ((temp1 == "m") || (temp1 == "M"))
-            pn.setUnit(M);
-        else if ((temp1 == "km") || (temp1 == "KM"))
-            pn.setUnit(KM);
-        else if ((temp1 == "sec") || (temp1 == "SEC"))
-            pn.setUnit(SEC);
-        else if ((temp1 == "min") || (temp1 == "MIN"))
-            pn.setUnit(MIN);
-        else if ((temp1 == "hour") || (temp1 == "HOUR"))
-            pn.setUnit(HOUR);
-        else if ((temp1 == "g") || (temp1 == "G"))
-            pn.setUnit(G);
-        else if ((temp1 == "kg") || (temp1 == "KG"))
-            pn.setUnit(KG);
-        else if ((temp1 == "ton") || (temp1 == "TON"))
-            pn.setUnit(TON);
-        else
-            return is;
+        __throw_runtime_error("They input is not corect.");
     }
-    pn.setData(stod(value1));
+    else
+    {
+        num = temp.substr(0, parStart);
+        type = temp.substr(parStart+1, parEnd);
+        if ((type == "cm") || (type == "CM"))
+        {
+            pn.setUnit(CM);
+        }
+        else if ((type == "m") || (type == "M"))
+        {
+            pn.setUnit(M);
+        }
+        else if ((type == "km") || (type == "KM"))
+        {
+            pn.setUnit(KM);
+        }
+        else if ((type == "hour") || (type == "HOUR"))
+        {
+            pn.setUnit(HOUR);
+        }
+        else if ((type == "min") || (type == "MIN"))
+        {
+            pn.setUnit(MIN);
+        }
+        else if ((type == "sec") || (type == "SEC"))
+        {
+            pn.setUnit(SEC);
+        }
+        else if ((type == "ton") || (type == "TON"))
+        {
+            pn.setUnit(TON);
+        }
+        else if ((type == "kg") || (type == "KG"))
+        {
+            pn.setUnit(KG);
+        }
+        else if ((type == "g") || (type == "G"))
+        {
+            pn.setUnit(G);
+        }
+        else
+        {
+            __throw_runtime_error("They input is not corect.");
+        }
+
+        if (stod(num) >=0)
+        {
+            pn.setData(stod(num));
+        }
+        else
+        {
+            __throw_runtime_error("They input is not corect.");
+        }
+    }
     return is;
+
 }
