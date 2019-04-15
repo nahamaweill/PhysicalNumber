@@ -539,7 +539,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
     else
     {
         num = temp.substr(0, parStart);
-        type = temp.substr(parStart+1, parEnd);
+        type = temp.substr(parStart+1, temp.length() - 2 - parStart);
         if ((type == "cm") || (type == "CM"))
         {
             pn.setUnit(CM);
