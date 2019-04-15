@@ -460,7 +460,7 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
     //If they are not on the same group.
     if(sameGroup(tempThis, tempOther) == false)
     {
-        return true;
+        __throw_runtime_error("They are not on the same group.");
     }
     //If they have the same unit.
     else if(tempThis.unit == tempOther.unit)
