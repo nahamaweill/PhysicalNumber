@@ -105,7 +105,7 @@ int main()
     .CHECK_OK(istringstream("2[km]") >> a)
     .CHECK_OK(istringstream("2.5[hour]") >> c)
     .CHECK_OUTPUT(i-b, "2[km]")
-    .CHECK_OUTPUT((i!=e), "1") //Checks if KILOMETER != SECOND is true.
+    .CHECK_THROWS((i!=e)) //Checks if KILOMETER != SECOND is true.
     .CHECK_OUTPUT((i!=b), "1")
     .CHECK_OUTPUT(mi+se, "120[min]")
     .CHECK_OUTPUT(se+mi, "7200[sec]")
