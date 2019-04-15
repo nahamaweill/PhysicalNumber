@@ -23,28 +23,24 @@ bool PhysicalNumber::sameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
     {
         return true;
     }
-
     //If they both are time unit.
     else if((num1.unit == SEC || num1.unit == MIN || num1.unit == HOUR)
     && (num2.unit == SEC || num2.unit == MIN || num2.unit == HOUR))
     {
         return true;
     }
-
     //If they both are size unit.
     else if((num1.unit == CM || num1.unit == M || num1.unit == KM)
     && (num2.unit == CM || num2.unit == M || num2.unit == KM))
     {
         return true;
-    }
-    
+    } 
     //If they both are weight unit.
     else if((num1.unit == G || num1.unit == KG || num1.unit == TON)
     && (num2.unit == G || num2.unit == KG || num2.unit == TON))
     {
         return true;
     }
-
     return false;
 }
 
@@ -124,7 +120,6 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
         else if (((num1.unit == MIN) && (num2.unit == SEC)) || ((num1.unit == SEC) && (num2.unit == MIN))) //Checks if the numbers are from type 'min' and 'sec'.
         {
-
             if (num1.unit == MIN) //Checks if num1 is in 'min'.
             {
                 num2.setData(num2.data / 60);
@@ -138,7 +133,7 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
     }
     //Checks if the numbers are in the weight group.
-    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.unit == G)) 
+    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.data == G)) 
     {
         if (((num1.unit == TON) && (num2.unit == KG)) || ((num1.unit == KG) && (num2.unit == TON))) //Checks if the numbers are from type 'ton' and 'kg'.
         {
@@ -313,7 +308,7 @@ PhysicalNumber& PhysicalNumber::operator--()
 
 PhysicalNumber PhysicalNumber::operator++(int num)
 {
-    PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
+    PhysicalNumber temp = *this;
     this->setData(this->data + 1);
     return temp;
 }
@@ -321,7 +316,7 @@ PhysicalNumber PhysicalNumber::operator++(int num)
 PhysicalNumber PhysicalNumber::operator--(int num)
 {
 
-    PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
+    PhysicalNumber temp = *this;
 
     if(this->data < 1) //Checks if the data is smaller than 1.
     {
@@ -329,12 +324,11 @@ PhysicalNumber PhysicalNumber::operator--(int num)
     }
     else
     {
-        this->setData(this->data - 1);
+        this->setData(this->data + 1);
 
     }
     return temp;
 }
-
 
 bool PhysicalNumber::operator>(const PhysicalNumber& num2)
 {
@@ -356,8 +350,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& num2)
     {
         convertIfSameGroup(tempThis, tempOther);
     }
-    return (tempThis.data > tempOther.data);
-    
+    return (tempThis.data > tempOther.data);   
 }
 
 bool PhysicalNumber::operator<(const PhysicalNumber& num2)
@@ -535,7 +528,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 
     if((parStart<=0) || (parEnd!=temp.length()-1) || (parStart>=parEnd) || (parStart+1 == parEnd) || (parEnd<=0))
     {
-        return is;
+        __throw_runtime_error("They input is not corect.");
     }
     else
     {
@@ -579,14 +572,17 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
         }
         else
         {
-            return is;
+            __throw_runtime_error("They input is not corect.");
         }
 
         if (stod(num) >=0)
         {
             pn.setData(stod(num));
         }
+        else
+        {
+            __throw_runtime_error("They input is not corect.");
+        }
     }
     return is;
-
 }

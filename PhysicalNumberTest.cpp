@@ -1,7 +1,3 @@
-/**
- * Examples of automatic tests for the exercise on physical numbers.
- */
-
 #include <iostream>
 #include <sstream>
 using std::cout, std::endl, std::istringstream;
@@ -9,6 +5,9 @@ using std::cout, std::endl, std::istringstream;
 using ariel::PhysicalNumber, ariel::Unit;
 #include "badkan.hpp"
 
+/**
+ * Examples of automatic tests for the exercise on physical numbers.
+ */
 int main()
 {
   badkan::TestCase testcase;
@@ -27,10 +26,10 @@ int main()
     PhysicalNumber g(1, Unit::TON);
     PhysicalNumber h(20, Unit::MIN);
     PhysicalNumber i(2.3, Unit::KM);
+    PhysicalNumber j(2.7, Unit::HOUR);
+    PhysicalNumber k(1.1, Unit::HOUR);
     PhysicalNumber mi(110, Unit::MIN);
     PhysicalNumber se(600, Unit::SEC);
-
-
 
     testcase
     .setname("Basic output")
@@ -58,7 +57,6 @@ int main()
     .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
-    
     .setname("MyTest")
     .CHECK_OK(istringstream("30[min]") >> d)
     .CHECK_OK(istringstream("20[min]") >> h)
@@ -66,17 +64,21 @@ int main()
     .CHECK_OUTPUT(h, "20[min]")
     .CHECK_OUTPUT(d+h-h, "30[min]") //Checks if the output is right.
     .CHECK_THROWS(d+g) //Checks if METER + GRAM throws exception.
+
     .CHECK_OUTPUT(g, "1[ton]")
     .CHECK_OUTPUT(f, "200[g]")
     .CHECK_OUTPUT(g+f, "1.0002[ton]") //Checks if it converts the TON to Gram and sums them.
     .CHECK_OUTPUT(-(g+f), "-1.0002[ton]") //Checks if the negative onary operator works(after sum).
     .CHECK_OUTPUT(+(g+f), "1.0002[ton]") //Checks if the positive onary operator works(after sum).
+
     .CHECK_OUTPUT(b, "300[m]")
     .CHECK_OUTPUT(-b, "-300[m]") //Checks if the negative onary operator works.
     .CHECK_OUTPUT(+b, "300[m]") //Checks if the positive onary operator works.
     .CHECK_OUTPUT(+b, "300[m]") //Checks if nothing has changed.
+
     .CHECK_OUTPUT((d>h), "1")
-    .CHECK_THROWS(d>g) //Checks if METER > GRAM throws exaption.
+    .CHECK_THROWS(d>g) //Checks if METER > GRAM throws exception.
+
     .CHECK_OUTPUT((h<d), "1")
     .CHECK_THROWS(h<g) //Checks if MINUTE > GRAM throws exception.
     .CHECK_THROWS(h==g) //Checks if MINUTE == GRAM throws exception.
@@ -84,13 +86,17 @@ int main()
     .CHECK_THROWS(h>=g) //Checks if MINUTE >= GRAM throws exception.
     .CHECK_THROWS(h+=g) //Checks if MINUTE += GRAM throws exception.
     .CHECK_THROWS(h-=g) //Checks if MINUTE -= GRAM throws exception.
+
     .CHECK_OUTPUT((c<=d), "0")
     .CHECK_OUTPUT(h, "20[min]") //Checks if the change worked well.
     .CHECK_OUTPUT((h==d), "0")
+
     .CHECK_OUTPUT(++c, "3[hour]")
     .CHECK_OUTPUT(c, "3[hour]") //Checks if the change worked well.
+
     .CHECK_OUTPUT(--g, "0[ton]")
     .CHECK_OUTPUT(g, "0[ton]") //Checks if the change worked well.
+
     .CHECK_OUTPUT((c<h), "0")
     .CHECK_THROWS(c>i) //Checks if MINUTE > GRAM throws exception.
     .CHECK_THROWS(c<i) //Checks if MINUTE > GRAM throws exception.
@@ -102,13 +108,20 @@ int main()
     .CHECK_OUTPUT((h+=(h+h)), "60[min]")
     .CHECK_OUTPUT((c-=h), "2[hour]")
     .CHECK_OUTPUT(c, "2[hour]") //Checks if the change worked well.
+
     .CHECK_OK(istringstream("2[km]") >> a)
     .CHECK_OK(istringstream("2.5[hour]") >> c)
     .CHECK_OUTPUT(i-b, "2[km]")
-    .CHECK_THROWS((i!=e)) //Checks if KILOMETER != SECOND is true.
+    .CHECK_THROWS((i!=e))
     .CHECK_OUTPUT((i!=b), "1")
     .CHECK_OUTPUT(mi+se, "120[min]")
     .CHECK_OUTPUT(se+mi, "7200[sec]")
+    .CHECK_OUTPUT(j-k, "1.6[hour]")
+
+    .CHECK_OK(istringstream("60[sec]") >> j)
+    .CHECK_OK(istringstream("1[min]") >> k)
+    .CHECK_OUTPUT((j!=k), "0")
+    .CHECK_OUTPUT((j==k), "1")
 
     .print(cout, /*show_grade=*/false);
     grade = testcase.grade();
