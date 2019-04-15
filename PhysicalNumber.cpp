@@ -133,7 +133,7 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
     }
     //Checks if the numbers are in the weight group.
-    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.data == G)) 
+    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.unit == G)) 
     {
         if (((num1.unit == TON) && (num2.unit == KG)) || ((num1.unit == KG) && (num2.unit == TON))) //Checks if the numbers are from type 'ton' and 'kg'.
         {
@@ -324,7 +324,7 @@ PhysicalNumber PhysicalNumber::operator--(int num)
     }
     else
     {
-        this->setData(this->data + 1);
+        this->setData(this->data - 1);
 
     }
     return temp;
