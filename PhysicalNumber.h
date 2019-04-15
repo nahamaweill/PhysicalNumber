@@ -40,12 +40,12 @@ using namespace std;
         const PhysicalNumber operator-(); //onary
         PhysicalNumber& operator-=(const PhysicalNumber& other);
 
-        friend bool operator>(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        friend bool operator<(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        friend bool operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        friend bool operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        friend bool operator==(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        friend bool operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator>(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator<(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator==(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2);
 
 
         PhysicalNumber& operator++();
@@ -57,11 +57,4 @@ using namespace std;
     
     ostream& operator<<(ostream& os, const PhysicalNumber& pn);
     istream& operator>>(istream& is, PhysicalNumber& pn);
-
-    bool operator>(const PhysicalNumber& num1, const PhysicalNumber& num2);
-    bool operator<(const PhysicalNumber& num1, const PhysicalNumber& num2);
-    bool operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-    bool operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-    bool operator==(const PhysicalNumber& num1, const PhysicalNumber& num2);
-    bool operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2);
 }
