@@ -27,6 +27,9 @@ int main()
     PhysicalNumber g(1, Unit::TON);
     PhysicalNumber h(20, Unit::MIN);
     PhysicalNumber i(2.3, Unit::KM);
+    PhysicalNumber mi(110, Unit::MIN);
+    PhysicalNumber se(600, Unit::SEC);
+
 
 
     testcase
@@ -104,6 +107,8 @@ int main()
     .CHECK_OUTPUT(i-b, "2[km]")
     .CHECK_OUTPUT((i!=e), "1") //Checks if KILOMETER != SECOND is true.
     .CHECK_OUTPUT((i!=b), "1")
+    .CHECK_OUTPUT(mi+se, "120[min]")
+    .CHECK_OUTPUT(se+mi, "7200[sec]")
 
     .print(cout, /*show_grade=*/false);
     grade = testcase.grade();

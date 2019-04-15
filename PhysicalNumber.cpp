@@ -94,7 +94,7 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
     }
     //Checks if the numbers are in the time group.
-    else if ((num1.unit == HOUR) || (num1.unit == MIN) || (num1.data == SEC)) 
+    else if ((num1.unit == HOUR) || (num1.unit == MIN) || (num1.unit == SEC)) 
     {
         if (((num1.unit == HOUR) && (num2.unit == MIN)) || ((num1.unit == MIN) && (num2.unit == HOUR))) //Checks if the numbers are from type 'hour' and 'min'.
         {
@@ -124,6 +124,7 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
         else if (((num1.unit == MIN) && (num2.unit == SEC)) || ((num1.unit == SEC) && (num2.unit == MIN))) //Checks if the numbers are from type 'min' and 'sec'.
         {
+
             if (num1.unit == MIN) //Checks if num1 is in 'min'.
             {
                 num2.setData(num2.data / 60);
@@ -137,7 +138,7 @@ void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& nu
         }
     }
     //Checks if the numbers are in the weight group.
-    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.data == G)) 
+    else if ((num1.unit == TON) || (num1.unit == KG) || (num1.unit == G)) 
     {
         if (((num1.unit == TON) && (num2.unit == KG)) || ((num1.unit == KG) && (num2.unit == TON))) //Checks if the numbers are from type 'ton' and 'kg'.
         {
