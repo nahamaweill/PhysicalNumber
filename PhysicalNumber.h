@@ -40,16 +40,18 @@ using namespace std;
         const PhysicalNumber operator-(); //onary
         PhysicalNumber& operator-=(const PhysicalNumber& other);
 
-        bool operator>(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        bool operator<(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        bool operator<=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        bool operator>=(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        bool operator==(const PhysicalNumber& num1, const PhysicalNumber& num2);
-        bool operator!=(const PhysicalNumber& num1, const PhysicalNumber& num2);
+        bool operator>(const PhysicalNumber& num2);
+        bool operator<(const PhysicalNumber& num2);
+        bool operator<=(const PhysicalNumber& num2);
+        bool operator>=(const PhysicalNumber& num2);
+        bool operator==(const PhysicalNumber& num2);
+        bool operator!=(const PhysicalNumber& num2);
 
 
         PhysicalNumber& operator++();
         PhysicalNumber& operator--();
+        PhysicalNumber operator++(int);
+        PhysicalNumber operator--(int);
 
         friend ostream& operator<<(ostream& os, const PhysicalNumber& pn);
         friend istream& operator>>(istream& is, PhysicalNumber& pn);
