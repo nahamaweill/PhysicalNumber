@@ -1,4 +1,4 @@
-# Physical Number
+# Physical Numbers
 \
 This project represents physical numbers. \
 \
