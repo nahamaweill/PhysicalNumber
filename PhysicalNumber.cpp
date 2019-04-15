@@ -572,7 +572,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
         }
         else
         {
-            __throw_runtime_error("They input is not corect.");
+            return is;
         }
 
         if (stod(num) >=0)
@@ -581,7 +581,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
         }
         else
         {
-            __throw_runtime_error("They input is not corect.");
+            return is;
         }
     }
     return is;
