@@ -330,7 +330,7 @@ PhysicalNumber PhysicalNumber::operator--(int num)
     return temp;
 }
 
-bool PhysicalNumber::operator>(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator>(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -353,7 +353,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& num2)
     return (tempThis.data > tempOther.data);   
 }
 
-bool PhysicalNumber::operator<(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator<(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -376,7 +376,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& num2)
     return (tempThis.data < tempOther.data);
 }
 
-bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -399,7 +399,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
     return (tempThis.data <= tempOther.data);
 }
 
-bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -422,7 +422,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
     return (tempThis.data >= tempOther.data);
 }
 
-bool PhysicalNumber::operator==(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator==(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);
@@ -445,7 +445,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& num2)
     return (tempThis.data == tempOther.data);
 }
 
-bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
+const bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
     PhysicalNumber tempOther(num2.data, num2.unit);

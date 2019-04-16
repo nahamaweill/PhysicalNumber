@@ -40,12 +40,12 @@ using namespace std;
         const PhysicalNumber operator-(); //onary
         PhysicalNumber& operator-=(const PhysicalNumber& other);
 
-        bool operator>(const PhysicalNumber& num2);
-        bool operator<(const PhysicalNumber& num2);
-        bool operator<=(const PhysicalNumber& num2);
-        bool operator>=(const PhysicalNumber& num2);
-        bool operator==(const PhysicalNumber& num2);
-        bool operator!=(const PhysicalNumber& num2);
+        const bool operator>(const PhysicalNumber& num2);
+        const bool operator<(const PhysicalNumber& num2);
+        const bool operator<=(const PhysicalNumber& num2);
+        const bool operator>=(const PhysicalNumber& num2);
+        const bool operator==(const PhysicalNumber& num2);
+        const bool operator!=(const PhysicalNumber& num2);
 
 
         PhysicalNumber& operator++();
