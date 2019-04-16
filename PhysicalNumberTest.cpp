@@ -238,6 +238,8 @@ int main()
     .CHECK_OUTPUT(-b, "-300[m]") //Checks if the negative onary operator works.
     .CHECK_OUTPUT(+b, "300[m]") //Checks if the positive onary operator works.
     .CHECK_OUTPUT(+b, "300[m]") //Checks if nothing has changed.
+    .CHECK_OUTPUT(--b, "299[m]")
+    .CHECK_OUTPUT(++b, "300[m]") //Checks if the negative onary operator works.
 
     .CHECK_OUTPUT((d>h), "1")
     .CHECK_THROWS(d>g) //Checks if METER > GRAM throws exception.
@@ -251,8 +253,14 @@ int main()
     .CHECK_THROWS(h-=g) //Checks if MINUTE -= GRAM throws exception.
 
     .CHECK_OUTPUT((c<=d), "0")
+    .CHECK_OUTPUT((c>=d), "1")
+    .CHECK_OUTPUT((c<d), "0")
+    .CHECK_OUTPUT((c>d), "1")
+    .CHECK_OUTPUT((c==d), "0")
+
     .CHECK_OUTPUT(h, "20[min]") //Checks if the change worked well.
     .CHECK_OUTPUT((h==d), "0")
+    .CHECK_OUTPUT((h==h), "1")
 
     .CHECK_OUTPUT(++c, "3[hour]")
     .CHECK_OUTPUT(c, "3[hour]") //Checks if the change worked well.
@@ -283,8 +291,36 @@ int main()
 
     .CHECK_OK(istringstream("60[sec]") >> j)
     .CHECK_OK(istringstream("1[min]") >> k)
+    .CHECK_OUTPUT(j, "60[sec]") //Checks if the change worked well.
+    .CHECK_OUTPUT(k, "1[min]") //Checks if the change worked well.
     .CHECK_OUTPUT((j!=k), "0")
     .CHECK_OUTPUT((j==k), "1")
+    .CHECK_OUTPUT((j<=k), "1")
+    .CHECK_OUTPUT((j>=k), "1")
+    .CHECK_OUTPUT((j<k), "0")
+    .CHECK_OUTPUT((j>k), "0")
+
+    .CHECK_OK(istringstream("1000[m]") >> d)
+    .CHECK_OK(istringstream("1[km]") >> e)
+    .CHECK_OUTPUT(d, "1000[m]") //Checks if the change worked well.
+    .CHECK_OUTPUT(e, "1[km]") //Checks if the change worked well.
+    .CHECK_OUTPUT((d!=e), "0")
+    .CHECK_OUTPUT((d==e), "1")
+    .CHECK_OUTPUT((d<=e), "1")
+    .CHECK_OUTPUT((d>=e), "1")
+    .CHECK_OUTPUT((d<e), "0")
+    .CHECK_OUTPUT((d>e), "0")
+
+    .CHECK_OK(istringstream("100[cm]") >> f)
+    .CHECK_OK(istringstream("1[m]") >> g)
+    .CHECK_OUTPUT(f, "100[cm]") //Checks if the change worked well.
+    .CHECK_OUTPUT(g, "1[m]") //Checks if the change worked well.
+    .CHECK_OUTPUT((f!=g), "0")
+    .CHECK_OUTPUT((f==g), "1")
+    .CHECK_OUTPUT((f<=g), "1")
+    .CHECK_OUTPUT((f>=g), "1")
+    .CHECK_OUTPUT((f<g), "0")
+    .CHECK_OUTPUT((f>g), "0")
 
     .print(cout, /*show_grade=*/false);
     grade = testcase.grade();
