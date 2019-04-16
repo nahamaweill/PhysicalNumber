@@ -28,6 +28,7 @@ int main()
     PhysicalNumber i(2.3, Unit::KM);
     PhysicalNumber j(2.7, Unit::HOUR);
     PhysicalNumber k(1.1, Unit::HOUR);
+    PhysicalNumber l(100, Unit::CM);
     PhysicalNumber mi(110, Unit::MIN);
     PhysicalNumber se(600, Unit::SEC);
 
@@ -58,6 +59,166 @@ int main()
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
     .setname("MyTest")
+    
+    //Checks all the exceptions options:
+    .CHECK_OUTPUT(a, "1700[kg]") //Checks if the output is right.
+    .CHECK_THROWS(a+b) //Checks if KILOGRAM + METER throws exception.
+    .CHECK_THROWS(a+c) //Checks if KILOGRAM + HOUR throws exception.
+    .CHECK_THROWS(a+d) //Checks if KILOGRAM + MINUTE throws exception.
+    .CHECK_THROWS(a+e) //Checks if KILOGRAM + SECOND throws exception.
+    .CHECK_THROWS(a+i) //Checks if KILOGRAM + KILOMETER throws exception.
+    .CHECK_THROWS(a+l) //Checks if KILOGRAM + CENTIMETER throws exception.
+    .CHECK_THROWS(a+=b) //Checks if KILOGRAM += METER throws exception.
+    .CHECK_THROWS(a+=c) //Checks if KILOGRAM + =HOUR throws exception.
+    .CHECK_THROWS(a+=d) //Checks if KILOGRAM += MINUTE throws exception.
+    .CHECK_THROWS(a+=e) //Checks if KILOGRAM += SECOND throws exception.
+    .CHECK_THROWS(a+=i) //Checks if KILOGRAM += KILOMETER throws exception.
+    .CHECK_THROWS(a+=l) //Checks if KILOGRAM += CENTIMETER throws exception.
+    .CHECK_THROWS(a-b) //Checks if KILOGRAM - METER throws exception.
+    .CHECK_THROWS(a-c) //Checks if KILOGRAM - HOUR throws exception.
+    .CHECK_THROWS(a-d) //Checks if KILOGRAM - MINUTE throws exception.
+    .CHECK_THROWS(a-e) //Checks if KILOGRAM - SECOND throws exception.
+    .CHECK_THROWS(a-i) //Checks if KILOGRAM - KILOMETER throws exception.
+    .CHECK_THROWS(a-l) //Checks if KILOGRAM - CENTIMETER throws exception.
+    .CHECK_THROWS(a-=b) //Checks if KILOGRAM -= METER throws exception.
+    .CHECK_THROWS(a-=c) //Checks if KILOGRAM -= HOUR throws exception.
+    .CHECK_THROWS(a-=d) //Checks if KILOGRAM -= MINUTE throws exception.
+    .CHECK_THROWS(a-=e) //Checks if KILOGRAM -= SECOND throws exception.
+    .CHECK_THROWS(a-=i) //Checks if KILOGRAM -= KILOMETER throws exception.
+    .CHECK_THROWS(a-=l) //Checks if KILOGRAM -= CENTIMETER throws exception.
+    .CHECK_THROWS(a>b) //Checks if KILOGRAM > METER throws exception.
+    .CHECK_THROWS(a>c) //Checks if KILOGRAM > HOUR throws exception.
+    .CHECK_THROWS(a>d) //Checks if KILOGRAM > MINUTE throws exception.
+    .CHECK_THROWS(a>e) //Checks if KILOGRAM > SECOND throws exception.
+    .CHECK_THROWS(a>i) //Checks if KILOGRAM > KILOMETER throws exception.
+    .CHECK_THROWS(a>l) //Checks if KILOGRAM > CENTIMETER throws exception.
+    .CHECK_THROWS(a>=b) //Checks if KILOGRAM >= METER throws exception.
+    .CHECK_THROWS(a>=c) //Checks if KILOGRAM >= HOUR throws exception.
+    .CHECK_THROWS(a>=d) //Checks if KILOGRAM >= MINUTE throws exception.
+    .CHECK_THROWS(a>=e) //Checks if KILOGRAM >= SECOND throws exception.
+    .CHECK_THROWS(a>=i) //Checks if KILOGRAM >= KILOMETER throws exception.
+    .CHECK_THROWS(a>=l) //Checks if KILOGRAM >= CENTIMETER throws exception.
+    .CHECK_THROWS(a<b) //Checks if KILOGRAM < METER throws exception.
+    .CHECK_THROWS(a<c) //Checks if KILOGRAM < HOUR throws exception.
+    .CHECK_THROWS(a<d) //Checks if KILOGRAM < MINUTE throws exception.
+    .CHECK_THROWS(a<e) //Checks if KILOGRAM < SECOND throws exception.
+    .CHECK_THROWS(a<i) //Checks if KILOGRAM < KILOMETER throws exception.
+    .CHECK_THROWS(a<l) //Checks if KILOGRAM < CENTIMETER throws exception.
+    .CHECK_THROWS(a<=b) //Checks if KILOGRAM <= METER throws exception.
+    .CHECK_THROWS(a<=c) //Checks if KILOGRAM <= HOUR throws exception.
+    .CHECK_THROWS(a<=d) //Checks if KILOGRAM <= MINUTE throws exception.
+    .CHECK_THROWS(a<=e) //Checks if KILOGRAM <= SECOND throws exception.
+    .CHECK_THROWS(a<=i) //Checks if KILOGRAM <= KILOMETER throws exception.
+    .CHECK_THROWS(a<=l) //Checks if KILOGRAM <= CENTIMETER throws exception.
+
+    .CHECK_THROWS(f+b) //Checks if GRAM + METER throws exception.
+    .CHECK_THROWS(f+c) //Checks if GRAM + HOUR throws exception.
+    .CHECK_THROWS(f+d) //Checks if GRAM + MINUTE throws exception.
+    .CHECK_THROWS(f+e) //Checks if GRAM + SECOND throws exception.
+    .CHECK_THROWS(f+i) //Checks if GRAM + KILOMETER throws exception.
+    .CHECK_THROWS(f+l) //Checks if GRAM + CENTIMETER throws exception.
+    .CHECK_THROWS(f+=b) //Checks if GRAM += METER throws exception.
+    .CHECK_THROWS(f+=c) //Checks if GRAM + =HOUR throws exception.
+    .CHECK_THROWS(f+=d) //Checks if GRAM += MINUTE throws exception.
+    .CHECK_THROWS(f+=e) //Checks if GRAM += SECOND throws exception.
+    .CHECK_THROWS(f+=i) //Checks if GRAM += KILOMETER throws exception.
+    .CHECK_THROWS(f+=l) //Checks if GRAM += CENTIMETER throws exception.
+    .CHECK_THROWS(f-b) //Checks if GRAM - METER throws exception.
+    .CHECK_THROWS(f-c) //Checks if GRAM - HOUR throws exception.
+    .CHECK_THROWS(f-d) //Checks if GRAM - MINUTE throws exception.
+    .CHECK_THROWS(f-e) //Checks if GRAM - SECOND throws exception.
+    .CHECK_THROWS(f-i) //Checks if GRAM - KILOMETER throws exception.
+    .CHECK_THROWS(f-l) //Checks if GRAM - CENTIMETER throws exception.
+    .CHECK_THROWS(f-=b) //Checks if GRAM -= METER throws exception.
+    .CHECK_THROWS(f-=c) //Checks if GRAM -= HOUR throws exception.
+    .CHECK_THROWS(f-=d) //Checks if GRAM -= MINUTE throws exception.
+    .CHECK_THROWS(f-=e) //Checks if GRAM -= SECOND throws exception.
+    .CHECK_THROWS(f-=i) //Checks if GRAM -= KILOMETER throws exception.
+    .CHECK_THROWS(f-=l) //Checks if GRAM -= CENTIMETER throws exception.
+    .CHECK_THROWS(f>b) //Checks if GRAM > METER throws exception.
+    .CHECK_THROWS(f>c) //Checks if GRAM > HOUR throws exception.
+    .CHECK_THROWS(f>d) //Checks if GRAM > MINUTE throws exception.
+    .CHECK_THROWS(f>e) //Checks if GRAM > SECOND throws exception.
+    .CHECK_THROWS(f>i) //Checks if GRAM > KILOMETER throws exception.
+    .CHECK_THROWS(f>l) //Checks if GRAM > CENTIMETER throws exception.
+    .CHECK_THROWS(f>=b) //Checks if GRAM >= METER throws exception.
+    .CHECK_THROWS(f>=c) //Checks if GRAM >= HOUR throws exception.
+    .CHECK_THROWS(f>=d) //Checks if GRAM >= MINUTE throws exception.
+    .CHECK_THROWS(f>=e) //Checks if GRAM >= SECOND throws exception.
+    .CHECK_THROWS(f>=i) //Checks if GRAM >= KILOMETER throws exception.
+    .CHECK_THROWS(f>=l) //Checks if GRAM >= CENTIMETER throws exception.
+    .CHECK_THROWS(f<b) //Checks if GRAM < METER throws exception.
+    .CHECK_THROWS(f<c) //Checks if GRAM < HOUR throws exception.
+    .CHECK_THROWS(f<d) //Checks if GRAM < MINUTE throws exception.
+    .CHECK_THROWS(f<e) //Checks if GRAM < SECOND throws exception.
+    .CHECK_THROWS(f<i) //Checks if GRAM < KILOMETER throws exception.
+    .CHECK_THROWS(f<l) //Checks if GRAM < CENTIMETER throws exception.
+    .CHECK_THROWS(f<=b) //Checks if GRAM <= METER throws exception.
+    .CHECK_THROWS(f<=c) //Checks if GRAM <= HOUR throws exception.
+    .CHECK_THROWS(f<=d) //Checks if GRAM <= MINUTE throws exception.
+    .CHECK_THROWS(f<=e) //Checks if GRAM <= SECOND throws exception.
+    .CHECK_THROWS(f<=i) //Checks if GRAM <= KILOMETER throws exception.
+    .CHECK_THROWS(f<=l) //Checks if GRAM <= CENTIMETER throws exception.
+
+    .CHECK_THROWS(g+b) //Checks if TON + METER throws exception.
+    .CHECK_THROWS(g+c) //Checks if TON + HOUR throws exception.
+    .CHECK_THROWS(g+d) //Checks if TON + MINUTE throws exception.
+    .CHECK_THROWS(g+e) //Checks if TON + SECOND throws exception.
+    .CHECK_THROWS(g+i) //Checks if TON + KILOMETER throws exception.
+    .CHECK_THROWS(g+l) //Checks if TON + CENTIMETER throws exception.
+    .CHECK_THROWS(g+=b) //Checks if TON += METER throws exception.
+    .CHECK_THROWS(g+=c) //Checks if TON + =HOUR throws exception.
+    .CHECK_THROWS(g+=d) //Checks if TON += MINUTE throws exception.
+    .CHECK_THROWS(g+=e) //Checks if TON += SECOND throws exception.
+    .CHECK_THROWS(g+=i) //Checks if TON += KILOMETER throws exception.
+    .CHECK_THROWS(g+=l) //Checks if TON += CENTIMETER throws exception.
+    .CHECK_THROWS(g-b) //Checks if TON - METER throws exception.
+    .CHECK_THROWS(g-c) //Checks if TON - HOUR throws exception.
+    .CHECK_THROWS(g-d) //Checks if TON - MINUTE throws exception.
+    .CHECK_THROWS(g-e) //Checks if TON - SECOND throws exception.
+    .CHECK_THROWS(g-i) //Checks if TON - KILOMETER throws exception.
+    .CHECK_THROWS(g-l) //Checks if TON - CENTIMETER throws exception.
+    .CHECK_THROWS(g-=b) //Checks if TON -= METER throws exception.
+    .CHECK_THROWS(g-=c) //Checks if TON -= HOUR throws exception.
+    .CHECK_THROWS(g-=d) //Checks if TON -= MINUTE throws exception.
+    .CHECK_THROWS(g-=e) //Checks if TON -= SECOND throws exception.
+    .CHECK_THROWS(g-=i) //Checks if TON -= KILOMETER throws exception.
+    .CHECK_THROWS(g-=l) //Checks if TON -= CENTIMETER throws exception.
+    .CHECK_THROWS(g>b) //Checks if TON > METER throws exception.
+    .CHECK_THROWS(g>c) //Checks if TON > HOUR throws exception.
+    .CHECK_THROWS(g>d) //Checks if TON > MINUTE throws exception.
+    .CHECK_THROWS(g>e) //Checks if TON > SECOND throws exception.
+    .CHECK_THROWS(g>i) //Checks if TON > KILOMETER throws exception.
+    .CHECK_THROWS(g>l) //Checks if TON > CENTIMETER throws exception.
+    .CHECK_THROWS(g>=b) //Checks if TON >= METER throws exception.
+    .CHECK_THROWS(g>=c) //Checks if TON >= HOUR throws exception.
+    .CHECK_THROWS(g>=d) //Checks if TON >= MINUTE throws exception.
+    .CHECK_THROWS(g>=e) //Checks if TON >= SECOND throws exception.
+    .CHECK_THROWS(g>=i) //Checks if TON >= KILOMETER throws exception.
+    .CHECK_THROWS(g>=l) //Checks if TON >= CENTIMETER throws exception.
+    .CHECK_THROWS(g<b) //Checks if TON < METER throws exception.
+    .CHECK_THROWS(g<c) //Checks if TON < HOUR throws exception.
+    .CHECK_THROWS(g<d) //Checks if TON < MINUTE throws exception.
+    .CHECK_THROWS(g<e) //Checks if TON < SECOND throws exception.
+    .CHECK_THROWS(g<i) //Checks if TON < KILOMETER throws exception.
+    .CHECK_THROWS(g<l) //Checks if TON < CENTIMETER throws exception.
+    .CHECK_THROWS(g<=b) //Checks if TON <= METER throws exception.
+    .CHECK_THROWS(g<=c) //Checks if TON <= HOUR throws exception.
+    .CHECK_THROWS(g<=d) //Checks if TON <= MINUTE throws exception.
+    .CHECK_THROWS(g<=e) //Checks if TON <= SECOND throws exception.
+    .CHECK_THROWS(g<=i) //Checks if TON <= KILOMETER throws exception.
+    .CHECK_THROWS(g<=l) //Checks if TON <= CENTIMETER throws exception.
+
+    .CHECK_OUTPUT(--g, "0[ton]")
+    .CHECK_THROWS(--g) //Checks if it throws exception for a negative number.
+    .CHECK_OUTPUT(++g, "1[ton]")
+
+    .CHECK_OUTPUT(g--, "1[ton]")
+    .CHECK_THROWS(g--) //Checks if it throws exception for a negative number.
+    .CHECK_OUTPUT(g++, "0[ton]")
+    .CHECK_OUTPUT(g, "1[ton]")
+
+    //All the other tests:
     .CHECK_OK(istringstream("30[min]") >> d)
     .CHECK_OK(istringstream("20[min]") >> h)
     .CHECK_OUTPUT(d, "30[min]")
