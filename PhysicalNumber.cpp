@@ -44,6 +44,9 @@ bool PhysicalNumber::sameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
     return false;
 }
 
+/*
+This function converts the second number to the first one if they are on the same group.
+*/
 void PhysicalNumber::convertIfSameGroup(PhysicalNumber& num1, PhysicalNumber& num2)
 {
     //Checks if the numbers are in the size group.
@@ -210,8 +213,7 @@ This function changes the data of the unit to the it's positive number.
 */
 const PhysicalNumber PhysicalNumber::operator+()
 {
-
-    if (this->data <0)
+    if (this->data < 0)
     {
        return PhysicalNumber ((-1)*(this->data), this->unit);
     }
@@ -306,6 +308,9 @@ PhysicalNumber& PhysicalNumber::operator--()
     return *this;
 }
 
+/*
+This function adds 1 to the data.
+*/
 PhysicalNumber PhysicalNumber::operator++(int num)
 {
     PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
@@ -313,9 +318,11 @@ PhysicalNumber PhysicalNumber::operator++(int num)
     return temp;
 }
 
+/*
+This function subtracts 1 to the data.
+*/
 PhysicalNumber PhysicalNumber::operator--(int num)
 {
-
     PhysicalNumber temp(this->data, this->unit); //temp PhysicalNumber.
 
     if(this->data < 1) //Checks if the data is smaller than 1.
@@ -325,11 +332,13 @@ PhysicalNumber PhysicalNumber::operator--(int num)
     else
     {
         this->setData(this->data - 1);
-
     }
     return temp;
 }
 
+/*
+This function checks if the first number is bigger from the second one (if they are on the same group).
+*/
 const bool PhysicalNumber::operator>(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -353,6 +362,9 @@ const bool PhysicalNumber::operator>(const PhysicalNumber& num2)
     return (tempThis.data > tempOther.data);   
 }
 
+/*
+This function checks if the first number is smaller from the second one (if they are on the same group).
+*/
 const bool PhysicalNumber::operator<(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -376,6 +388,9 @@ const bool PhysicalNumber::operator<(const PhysicalNumber& num2)
     return (tempThis.data < tempOther.data);
 }
 
+/*
+This function checks if the first number is bigger or equl from the second one (if they are on the same group).
+*/
 const bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -399,6 +414,9 @@ const bool PhysicalNumber::operator<=(const PhysicalNumber& num2)
     return (tempThis.data <= tempOther.data);
 }
 
+/*
+This function checks if the first number is smaller or equl from the second one (if they are on the same group).
+*/
 const bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -422,6 +440,9 @@ const bool PhysicalNumber::operator>=(const PhysicalNumber& num2)
     return (tempThis.data >= tempOther.data);
 }
 
+/*
+This function checks if the 2 numbers are equal (if they are on the same group).
+*/
 const bool PhysicalNumber::operator==(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -445,6 +466,9 @@ const bool PhysicalNumber::operator==(const PhysicalNumber& num2)
     return (tempThis.data == tempOther.data);
 }
 
+/*
+This function checks if the 2 numbers are not equal (if they are on the same group).
+*/
 const bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
 {
     PhysicalNumber tempThis(this->data, this->unit);
@@ -468,6 +492,9 @@ const bool PhysicalNumber::operator!=(const PhysicalNumber& num2)
     return (tempThis.data != tempOther.data);
 }
 
+/*
+This function responsibles for the output of the physical numbers.
+*/
 ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
 {
     string type = " ";
@@ -512,28 +539,29 @@ ostream& ariel::operator<<(ostream& os, const PhysicalNumber& pn)
         default:
         cout << "ERROR";
     }
-
     return (os << pn.data << '[' << type << ']') ;
 }
 
+/*
+This function responsibles for the input of the physical numbers.
+*/
 istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
 {
-
-    string temp, num, type;;
-    int parStart=0;
-    int parEnd=0;
+    string temp, num, type;
+    int parStart = 0;
+    int parEnd = 0;
     is >> temp;
     parStart = temp.find('[');
     parEnd = temp.find(']');
 
-    if((parStart<=0) || (parEnd!=temp.length()-1) || (parStart>=parEnd) || (parStart+1 == parEnd) || (parEnd<=0))
+    if((parStart <= 0) || (parEnd != temp.length()-1) || (parStart >= parEnd) || (parStart+1 == parEnd) || (parEnd <= 0))
     {
         return is;
     }
     else
     {
         num = temp.substr(0, parStart);
-        type = temp.substr(parStart+1, temp.length() - 2 - parStart);
+        type = temp.substr(parStart+1, temp.length()-2 - parStart);
         if ((type == "cm") || (type == "CM"))
         {
             pn.setUnit(CM);
@@ -574,8 +602,7 @@ istream& ariel::operator>>(istream& is, PhysicalNumber& pn)
         {
             return is;
         }
-
-        if (stod(num) >=0)
+        if (stod(num) >= 0)
         {
             pn.setData(stod(num));
         }

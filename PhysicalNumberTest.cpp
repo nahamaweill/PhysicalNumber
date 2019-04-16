@@ -59,7 +59,7 @@ int main()
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
     .setname("MyTest")
-    
+
     //Checks all the exceptions options:
     .CHECK_OUTPUT(a, "1700[kg]") //Checks if the output is right.
     .CHECK_THROWS(a+b) //Checks if KILOGRAM + METER throws exception.
@@ -221,10 +221,12 @@ int main()
     //All the other tests:
     .CHECK_OK(istringstream("30[min]") >> d)
     .CHECK_OK(istringstream("20[min]") >> h)
-    .CHECK_OUTPUT(d, "30[min]")
-    .CHECK_OUTPUT(h, "20[min]")
+    .CHECK_OUTPUT(d, "30[min]") //Checks if the output is right.
+    .CHECK_OUTPUT(h, "20[min]") //Checks if the output is right.
+    .CHECK_OUTPUT(h+d, "50[min]") //Checks if the output is right.
+    .CHECK_OUTPUT(h+d+d, "80[min]") //Checks if the output is right.
     .CHECK_OUTPUT(d+h-h, "30[min]") //Checks if the output is right.
-    .CHECK_THROWS(d+g) //Checks if METER + GRAM throws exception.
+    
 
     .CHECK_OUTPUT(g, "1[ton]")
     .CHECK_OUTPUT(f, "200[g]")
